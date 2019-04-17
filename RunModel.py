@@ -43,3 +43,4 @@ Support.print_comparative_outcomes(sim_outcomes_none=cohort_none.cohortOutcomes,
 # report the CEA results
 Support.report_CEA_CBA(sim_outcomes_none=cohort_none.cohortOutcomes,
                        sim_outcomes_treat=cohort_treat.cohortOutcomes)
+

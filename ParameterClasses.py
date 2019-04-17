@@ -11,9 +11,10 @@ class HealthStates(Enum):
 
 
 class Therapies(Enum):
-   CASH_INCENTIVES = 1
-   HOME_VISITS = 2
-   NONE= 0
+    COUNSELING = 3
+    CASH_INCENTIVES = 1
+    HOME_VISITS = 2
+    NONE = 0
 
 
 class ParametersFixed:

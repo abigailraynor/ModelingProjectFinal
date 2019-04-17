@@ -35,6 +35,13 @@ HOME_VISITS_MATRIX = [
     [0, 0, 1.0, 0],
     [0, 0, 0, 1.0]
 ]
+
+COUNSELING_MATRIX = [
+    [0.99468, 0.00532, 0, 0],
+    [0, 0, 0.72, 0.18],
+    [0, 0, 1.0, 0],
+    [0, 0, 0, 1.0]
+]
 # Costs
 ANNUAL_COST_MATRIX = [
     0,
@@ -46,4 +53,5 @@ ANNUAL_COST_MATRIX = [
 # Potential Treatment Costs
 STANDARD_OF_CARE = 0
 CASH_INCENTIVES = 90
-HOME_VISIT_COSTS = 117
+HOME_VISIT_COST = 117
+COUNSELING_COST =
