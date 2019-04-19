@@ -29,8 +29,8 @@ class ParametersFixed:
         # annual treatment cost
         if self.therapy == Therapies.NONE:
             self.annualTreatmentCost = Data.STANDARD_OF_CARE
-        else:
-            self.annualTreatmentCost = Data.CASH_INCENTIVES
+        elif self.therapy == Therapies.HOME_VISITS:
+            self.annualTreatmentCost = Data.HOME_VISIT_COST
 
         # transition probability matrix of the selected therapy
         self.probMatrix = []
@@ -40,9 +40,9 @@ class ParametersFixed:
             # calculate transition probability matrix for the stroke therapy
             self.probMatrix = get_prob_matrix_standard()
 
-        else:
+        elif self.therapy == Therapies.HOME_VISITS:
             # calculate transition probability matrix for the cash incentive intervention
-            self.probMatrix = get_prob_matrix_cash()
+            self.probMatrix = get_prob_matrix_home()
 
         # annual state costs and utilities
         self.annualTotalCosts = Data.ANNUAL_COST_MATRIX
@@ -64,3 +64,9 @@ def get_prob_matrix_cash():
 def get_prob_matrix_home():
 
     return Data.HOME_VISITS_MATRIX
+
+
+def get_prob_matrix_counsel():
+
+    return Data.COUNSELING_MATRIX
+

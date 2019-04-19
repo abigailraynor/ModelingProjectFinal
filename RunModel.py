@@ -21,7 +21,7 @@ Support.print_outcomes(sim_outcomes=myCohort.cohortOutcomes,
                        therapy_name=therapy)
 
 # selected COST INCENTIVE therapy
-therapy = P.Therapies.CASH_INCENTIVES
+therapy = P.Therapies.HOME_VISITS
 
 # create a cohort
 myCohort = Cls.Cohort(id=1,
@@ -40,7 +40,7 @@ Support.print_outcomes(sim_outcomes=myCohort.cohortOutcomes,
 
 # simulating mono therapy
 # create a cohort
-cohort_none = Cls.Cohort(id=1,
+cohort_none = Cls.Cohort(id=0,
                          pop_size=D.POP_SIZE,
                          parameters=P.ParametersFixed(therapy=P.Therapies.NONE))
 # simulate the cohort
@@ -48,9 +48,9 @@ cohort_none.simulate(n_time_steps=D.SIM_TIME_STEPS)
 
 # simulating combination therapy
 # create a cohort
-cohort_treat = Cls.Cohort(id=2,
+cohort_treat = Cls.Cohort(id=1,
                           pop_size=D.POP_SIZE,
-                          parameters=P.ParametersFixed(therapy=P.Therapies.CASH_INCENTIVES))
+                          parameters=P.ParametersFixed(therapy=P.Therapies.HOME_VISITS))
 # simulate the cohort
 cohort_treat.simulate(n_time_steps=D.SIM_TIME_STEPS)
 
@@ -58,7 +58,7 @@ cohort_treat.simulate(n_time_steps=D.SIM_TIME_STEPS)
 Support.print_outcomes(sim_outcomes=cohort_none.cohortOutcomes,
                        therapy_name=P.Therapies.NONE)
 Support.print_outcomes(sim_outcomes=cohort_treat.cohortOutcomes,
-                       therapy_name=P.Therapies.CASH_INCENTIVES)
+                       therapy_name=P.Therapies.HOME_VISITS)
 
 
 # print comparative outcomes

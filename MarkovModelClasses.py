@@ -18,7 +18,8 @@ class Patient:
 
         t = 0
 
-        while self.stateMonitor.get_if_alive() and t < n_time_steps:
+        # while self.stateMonitor.get_if_alive() and t < n_time_steps:
+        while t < n_time_steps:
 
             # find the transition probabilities to future states
             trans_probs = self.params.probMatrix[self.stateMonitor.currentState.value]
@@ -51,8 +52,8 @@ class PatientStateMonitor:
         :param new_state: new state
         """
         # IF THE PATIENT IS INCOMPLETE, DO NOTHING
-        if self.currentState == P.HealthStates.INCOMPLETE:
-            return
+        # if self.currentState == P.HealthStates.INCOMPLETE:
+        #     return
 
         # IF THE PATIENT IS CURED, COUNT AS A CURED CASE
         if self.currentState == P.HealthStates.CURED:
@@ -66,12 +67,13 @@ class PatientStateMonitor:
         # update current health state
         self.currentState = new_state
 
-    def get_if_alive(self):
-        """ returns true if the patient is still alive """
-        if self.currentState != P.HealthStates.INCOMPLETE:
-            return True
-        else:
-            return False
+    # def get_if_alive(self):
+    #     """ returns true if the patient is still alive """
+    #     if self.currentState == P.HealthStates.INCOMPLETE or self.currentState == P.HealthStates.CURED or \
+    #             self.currentState == P.HealthStates.INCOMPLETE or self.currentState == P.HealthStates.WELL:
+    #         return True
+    #     else:
+    #         return False
 
 
 class PatientCostUtilityMonitor:
@@ -93,22 +95,21 @@ class PatientCostUtilityMonitor:
         """
 
         # update cost
-        cost = 0.5 * (self.params.annualTotalCosts[current_state.value] +
-                      self.params.annualTotalCosts[next_state.value])
+        cost = (self.params.annualTotalCosts[current_state.value] + self.params.annualTotalCosts[next_state.value])
         # # update utility
         # utility = 0.5 * (self.params.annualTotalUtility[current_state.value] +
         #                  self.params.annualTotalUtility[next_state.value])
 
         # add the cost of treatment
-        if next_state == P.HealthStates.INCOMPLETE:
-            cost += 0.5 * self.params.annualTreatmentCost
-        else:
+        if next_state == P.HealthStates.ACTIVE_TB:
+        #     cost += 0.5 * self.params.annualTreatmentCost
+        # else:
             cost += 1 * self.params.annualTreatmentCost
 
         # update total discounted cost and utility (corrected for the half-cycle effect)
         self.totalDiscountedCost += Econ.pv_single_payment(payment=cost,
-                                                           discount_rate=self.params.discountRate / 2,
-                                                           discount_period=2 * k + 1)
+                                                           discount_rate=self.params.discountRate,
+                                                           discount_period=k + 1)
 
         # self.totalDiscountedUtility += Econ.pv_single_payment(payment=utility,
         #                                                       discount_rate=self.params.discountRate / 2,

@@ -148,7 +148,7 @@ def report_CEA_CBA(sim_outcomes_none, sim_outcomes_treat):
         color='green'
     )
     treat_therapy_strategy = Econ.Strategy(
-        name='Anticoagulation Therapy',
+        name='Intervention to Increase Adherence',
         cost_obs=sim_outcomes_treat.costs,
         effect_obs=sim_outcomes_treat.nTotalCured,
         color='blue'

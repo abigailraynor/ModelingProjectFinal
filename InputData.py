@@ -1,8 +1,8 @@
 from enum import Enum
 
 # simulation settings
-POP_SIZE = 5672       # population of south africa
-SIM_TIME_STEPS = 50    # length of simulation (years)
+POP_SIZE = 50      # population of south africa
+SIM_TIME_STEPS = 2000    # length of simulation (years)
 DISCOUNT = 0.03
 ALPHA = 0.05
 
@@ -16,10 +16,10 @@ class HealthState(Enum):
 
 
 STANDARD_OF_CARE_MATRIX = [
-    [0.99468, 0.00532, 0, 0],
-    [0, 0, 0.707, 0.293],
-    [0, 0, 1.0, 0],
-    [0, 0, 0, 1.0]
+    [0.99468, 0.00532, 0, 0], #WELL
+    [0, 0, 0.707, 0.293], #ACTIVE TB
+    [0, 0, 1.0, 0], #CURED
+    [0, 0, 0, 1.0] #INCOMPLETE
 ]
 
 CASH_INCENTIVE_MATRIX = [
@@ -42,6 +42,7 @@ COUNSELING_MATRIX = [
     [0, 0, 1.0, 0],
     [0, 0, 0, 1.0]
 ]
+
 # Costs
 ANNUAL_COST_MATRIX = [
     0,
