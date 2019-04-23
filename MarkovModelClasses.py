@@ -56,7 +56,7 @@ class PatientStateMonitor:
         #     return
 
         # IF THE PATIENT IS CURED, COUNT AS A CURED CASE
-        if self.currentState == P.HealthStates.CURED:
+        if self.currentState == P.HealthStates.ACTIVE_TB and new_state == P.HealthStates.CURED:
             self.nCured += 1
 
         # update cost and utility
@@ -101,10 +101,12 @@ class PatientCostUtilityMonitor:
         #                  self.params.annualTotalUtility[next_state.value])
 
         # add the cost of treatment
-        if next_state == P.HealthStates.ACTIVE_TB:
-        #     cost += 0.5 * self.params.annualTreatmentCost
-        # else:
+        if current_state == P.HealthStates.ACTIVE_TB and next_state == P.HealthStates.ACTIVE_TB:
             cost += 1 * self.params.annualTreatmentCost
+        elif current_state == P.HealthStates.ACTIVE_TB and next_state == P.HealthStates.CURED or P.HealthStates.INCOMPLETE:
+            cost += 0.5 * self.params.annualTreatmentCost
+
+
 
         # update total discounted cost and utility (corrected for the half-cycle effect)
         self.totalDiscountedCost += Econ.pv_single_payment(payment=cost,

@@ -15,16 +15,16 @@ def print_outcomes(sim_outcomes, therapy_name):
     # mean and confidence interval text of discounted total cost
     nCured_mean_CI_text = sim_outcomes.statCured\
         .get_formatted_mean_and_interval(interval_type='c',
-                                         alpha= D.ALPHA,
-                                         deci= 0,
-                                         form=',')
+                                         alpha = D.ALPHA,
+                                         deci = 2,
+                                         form =',')
 
     # mean and confidence interval text of discounted total cost
     cost_mean_CI_text = sim_outcomes.statCost\
         .get_formatted_mean_and_interval(interval_type='c',
-                                         alpha=D.ALPHA,
-                                         deci=0,
-                                         form=',')
+                                         alpha = D.ALPHA,
+                                         deci = 2,
+                                         form =',')
 
     # # mean and confidence interval text of discounted total utility
     # utility_mean_CI_text = sim_outcomes.statUtility\

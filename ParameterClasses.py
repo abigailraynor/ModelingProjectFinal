@@ -31,6 +31,10 @@ class ParametersFixed:
             self.annualTreatmentCost = Data.STANDARD_OF_CARE
         elif self.therapy == Therapies.HOME_VISITS:
             self.annualTreatmentCost = Data.HOME_VISIT_COST
+        elif self.therapy == Therapies.CASH_INCENTIVES:
+            self.annualTreatmentCost = Data.CASH_INCENTIVES
+        elif self.therapy == Therapies.COUNSELING:
+            self.annualTreatmentCost =  Data.COUNSELING_COST
 
         # transition probability matrix of the selected therapy
         self.probMatrix = []
@@ -43,6 +47,14 @@ class ParametersFixed:
         elif self.therapy == Therapies.HOME_VISITS:
             # calculate transition probability matrix for the cash incentive intervention
             self.probMatrix = get_prob_matrix_home()
+
+        elif self.therapy == Therapies.CASH_INCENTIVES:
+            # calculate transition probability matrix for the cash incentive intervention
+            self.probMatrix = get_prob_matrix_cash()
+
+        elif self.therapy == Therapies.COUNSELING:
+            # calculate transition probability matrix for the cash incentive intervention
+            self.probMatrix = get_prob_matrix_counsel()
 
         # annual state costs and utilities
         self.annualTotalCosts = Data.ANNUAL_COST_MATRIX
