@@ -51,12 +51,11 @@ class PatientStateMonitor:
         :param time_step: current time step
         :param new_state: new state
         """
-        # IF THE PATIENT IS INCOMPLETE, DO NOTHING
-        # if self.currentState == P.HealthStates.INCOMPLETE:
-        #     return
+        # # IF THE PATIENT IS CURED, COUNT AS A CURED CASE
+        # if self.currentState == P.HealthStates.ACTIVE_TB and new_state == P.HealthStates.CURED:
+        #     self.nCured += 1
 
-        # IF THE PATIENT IS CURED, COUNT AS A CURED CASE
-        if self.currentState == P.HealthStates.ACTIVE_TB and new_state == P.HealthStates.CURED:
+        if new_state == P.HealthStates.CURED:
             self.nCured += 1
 
         # update cost and utility

@@ -179,7 +179,7 @@ def report_CEA_CBA(sim_outcomes_none, sim_outcomes_treat):
     # show the net monetary benefit figure
     NBA.graph_incremental_NMBs(
         min_wtp=0,
-        max_wtp=70000,
+        max_wtp=1000,
         title='Cost-Benefit Analysis',
         x_label='Willingness-to-pay for one additional patient cured ($)',
         y_label='Incremental Net Monetary Benefit ($)',
@@ -222,8 +222,8 @@ def show_ce_figure(CEA):
     plt.legend()        # show the legend
     plt.axhline(y=0, c='k', linewidth=0.5)  # horizontal line at y = 0
     plt.axvline(x=0, c='k', linewidth=0.5)  # vertical line at x = 0
-    plt.xlim([-2.5, 10])              # x-axis range
-    plt.ylim([-50000, 200000])     # y-axis range
+    plt.xlim([-2.5, 30])              # x-axis range
+    plt.ylim([-100, 4000])     # y-axis range
     plt.title('Cost-Effectiveness Analysis')
     plt.xlabel('Additional discounted utility')
     plt.ylabel('Additional discounted cost')

@@ -4,7 +4,7 @@ import InputData as Data
 
 class HealthStates(Enum):
     """ health states of patients with primary tuberculosis infections """
-    WELL = 0
+    ACTIVE_UNDIAGNOSED = 0
     ACTIVE_TB = 1
     CURED = 2
     INCOMPLETE = 3
@@ -24,7 +24,7 @@ class ParametersFixed:
         self.therapy = therapy
 
         # initial health state
-        self.initialHealthState = HealthStates.WELL
+        self.initialHealthState = HealthStates.ACTIVE_UNDIAGNOSED
 
         # annual treatment cost
         if self.therapy == Therapies.NONE:

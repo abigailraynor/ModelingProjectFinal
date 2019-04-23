@@ -1,8 +1,8 @@
 from enum import Enum
 
 # simulation settings
-POP_SIZE = 500      # population of south africa
-SIM_TIME_STEPS = 200    # length of simulation (years)
+POP_SIZE = 5600      # population of south africa
+SIM_TIME_STEPS = 100    # length of simulation (years)
 DISCOUNT = 0.03
 ALPHA = 0.05
 
@@ -38,7 +38,7 @@ HOME_VISITS_MATRIX = [
 
 COUNSELING_MATRIX = [
     [0.33, 0.67, 0, 0],  # ACTIVE_UNDIAGNOSED
-    [0, 0, 0.72, 0.18],
+    [0, 0, 0.72, 0.28],
     [0, 0, 1.0, 0],
     [0, 0, 0, 1.0]
 ]
